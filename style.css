@@ -10,7 +10,9 @@
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -27,7 +29,23 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none; /* Custom cursor */
+    cursor: none;
+    /* Custom cursor defaults */
+}
+
+@media (hover: none) and (pointer: coarse) {
+    body {
+        cursor: auto;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+
+    a {
+        cursor: pointer;
+    }
 }
 
 /* Custom Cursor */
@@ -62,7 +80,8 @@ body:hover .cursor-outline {
 a {
     text-decoration: none;
     color: inherit;
-    cursor: none; /* For custom cursor logic */
+    cursor: none;
+    /* For custom cursor logic */
 }
 
 ul {
@@ -76,7 +95,10 @@ img {
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-heading);
     font-weight: 700;
     color: var(--text-primary);
@@ -99,7 +121,8 @@ h1, h2, h3, h4 {
     z-index: 100;
     padding: 20px 0;
     transition: var(--transition);
-    background: transparent; /* Start transparent */
+    background: transparent;
+    /* Start transparent */
 }
 
 .header.scrolled {
@@ -113,6 +136,38 @@ h1, h2, h3, h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--gold-accent);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--gold-accent);
 }
 
 .logo {
@@ -214,8 +269,10 @@ h1, h2, h3, h4 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 120%; /* Taller for parallax */
-    background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop'); /* Placeholder Feast */
+    height: 120%;
+    /* Taller for parallax */
+    background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop');
+    /* Placeholder Feast */
     background-size: cover;
     background-position: center;
     z-index: -2;
@@ -227,7 +284,7 @@ h1, h2, h3, h4 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.8) 100%);
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.8) 100%);
     z-index: -1;
 }
 
@@ -383,7 +440,7 @@ h1, h2, h3, h4 {
     font-size: 2rem;
     margin-bottom: 40px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: inline-block;
 }
 
@@ -402,7 +459,7 @@ h1, h2, h3, h4 {
 
 .menu-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .menu-img {
@@ -456,15 +513,17 @@ h1, h2, h3, h4 {
 }
 
 .masonry-item:hover img {
-    transform: scale(1.05); /* Subtle zoom */
+    transform: scale(1.05);
+    /* Subtle zoom */
 }
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,0.9)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920&auto=format&fit=crop');
+    background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Parallax effect */
+    background-attachment: fixed;
+    /* Parallax effect */
     text-align: center;
     padding: 150px 0;
 }
@@ -507,7 +566,7 @@ h1, h2, h3, h4 {
 .footer {
     background-color: #050505;
     padding: 80px 0 30px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-grid {
@@ -554,13 +613,13 @@ h1, h2, h3, h4 {
     background-color: #1a1a1a;
     border-radius: 4px;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     color: #555;
     font-size: 0.85rem;
 }
@@ -570,22 +629,75 @@ h1, h2, h3, h4 {
     .menu-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .about-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .masonry-gallery {
         column-count: 2;
     }
-    
+
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .hero-title {
         font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(10, 10, 10, 0.98);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        z-index: 1000;
+        /* Behind hamburger, above content */
+    }
+
+    .nav.nav-open {
+        left: 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    /* Adjust header button visibility on mobile menu if desired, 
+       or keep it in header. For now, let's keep it in header but maybe scale it down. */
+    .header .btn-primary {
+        display: none;
+        /* Hide 'Order via WhatsApp' button in header to save space, user can use menu link or bottom CTA */
+    }
+
+    /* Add a specific Mobile CTA to the nav if needed, or rely on the main page CTA */
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 3rem;
     }
 }
 
@@ -597,18 +709,38 @@ h1, h2, h3, h4 {
     .masonry-gallery {
         column-count: 1;
     }
-    
+
     .hero-title {
         font-size: 2.5rem;
     }
-    
-    .nav-list {
-        display: none; /* Hide nav for mobile for simplicity in this MVP, ideally burger menu */
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+
+    .hero-bg {
+        background-attachment: scroll;
+        /* Disable parallax on mobile for performance */
+    }
+
+    .cta {
+        background-attachment: scroll;
     }
 }
 
 /* Animation Classes */
-.reveal-text, .reveal-image, .reveal-card {
+.reveal-text,
+.reveal-image,
+.reveal-card {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease-out;
